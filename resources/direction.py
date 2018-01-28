@@ -97,7 +97,7 @@ class Direction(Resource):
         gpio.output(13, True)
         gpio.output(15, False)
 #        time.sleep(SLEEP_TIME)
-        gpio.cleanup()
+#        gpio.cleanup()
 
 
     def backward(self):
