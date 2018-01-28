@@ -4,7 +4,7 @@ import time
 import os
 from resources import logging
 
-SLEEP_TIME = 5 #set the sleep time of the script so the motors will not keep running
+SLEEP_TIME = 1 #set the sleep time of the script so the motors will not keep running
 gpio.setwarnings(False) #disable the warnings because they are too much
 gpio.setmode(gpio.BOARD) # using the board numbering on the raspberry pi
 ''' setting up the mototrs and registering them with gpio '''
