@@ -41,8 +41,14 @@ class Config(object):
                 'level': 'DEBUG',
                 'propagate': True,
             },
+             'leds': {
+                'handlers': ['file'],
+                'level': 'DEBUG',
+                'propagate': True,
+            },
         },
     }
+    
 
 
 class DevelopmentConfig(Config):
