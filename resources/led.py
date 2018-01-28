@@ -29,9 +29,9 @@ class Led(Resource):
     		return getattr(self,option)
 
     def on(self):
-    	logger.info("light on")
-		GPIO.output(37, True)
+		logger.info("light on")
+        GPIO.output(37, True)
 
 	def off(self):
-	    logger.info("light off")
-		GPIO.output(37, False)
+        logger.info("light off")
+        GPIO.output(37, False)
