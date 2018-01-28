@@ -26,6 +26,7 @@ class Direction(Resource):
 
         self.directions = ['left','right','forward','backward','pivotright','pivotleft','stop']
         logger.debug("direction init")
+        gpio.setmode(gpio.BOARD)
 
     def get(self,direction):
 
