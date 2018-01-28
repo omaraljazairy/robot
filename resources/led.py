@@ -30,8 +30,9 @@ class Led(Resource):
     def on(self):
         logger.info("light on")
         GPIO.output(37, True)
+        return {'led 37':'on'}
 
     def off(self):
         logger.info("light off")
         GPIO.output(37, False)
-
+        return {'led 37':'off'}
