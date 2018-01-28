@@ -25,7 +25,7 @@ class Led(Resource):
             abort(400, error=error_msg)
         else:
             logger.info("option chosen :%s ", option)
-            return getattr(self, option)
+            return getattr(self, option)()
 
     def on(self):
         logger.info("light on")
