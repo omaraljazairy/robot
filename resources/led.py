@@ -1,5 +1,5 @@
 from flask_restful import Resource, abort
-import RPi.GPIO as gpio
+import RPi.GPIO as GPIO
 import time
 import os
 from resources import logging
