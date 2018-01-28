@@ -5,6 +5,12 @@ import os
 from resources import logging
 
 SLEEP_TIME = 1
+gpio.setmode(gpio.BOARD)
+gpio.setup(7, gpio.OUT)
+gpio.setup(11, gpio.OUT)
+gpio.setup(13, gpio.OUT)
+gpio.setup(15, gpio.OUT)
+
 logger = logging.getLogger('directions')
 
 class Direction(Resource):
@@ -25,10 +31,10 @@ class Direction(Resource):
             logger.error("%s", error_msg)
             abort(400,error=error_msg)
         else:
-            self.setup()
+#            self.setup()
             getattr(self,dir)()
             return {'direction':dir}
-
+    '''
     def setup(self):
 
         logger.debug("setup")
@@ -38,7 +44,7 @@ class Direction(Resource):
         gpio.setup(11, gpio.OUT)
         gpio.setup(13, gpio.OUT)
         gpio.setup(15, gpio.OUT)
-
+    '''
 
     def left(self):
 

@@ -1,12 +1,12 @@
 from flask_restful import Resource, abort
-import RPi.GPIO as GPIO
+import RPi.GPIO as gpio
 import time
 import os
 from resources import logging
 
-GPIO.setmode(GPIO.BOARD)
-GPIO.setwarnings(False)
-GPIO.setup(37, GPIO.OUT)
+gpio.setmode(gpio.BOARD)
+gpio.setwarnings(False)
+gpio.setup(37, gpio.OUT)
 
 SLEEP_TIME = 1
 logger = logging.getLogger('leds')
@@ -29,10 +29,10 @@ class Led(Resource):
 
     def on(self):
         logger.info("light on")
-        GPIO.output(37, True)
+        gpio.output(37, True)
         return {'led 37':'on'}
 
     def off(self):
         logger.info("light off")
-        GPIO.output(37, False)
+        gpio.output(37, False)
         return {'led 37':'off'}
