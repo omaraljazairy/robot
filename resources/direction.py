@@ -4,17 +4,13 @@ import time
 import os
 from resources import logging
 
-SLEEP_TIME = 1
-gpio.setwarnings(False)
-gpio.setmode(gpio.BOARD)
-gpio.setup(7, gpio.OUT)
-gpio.setup(11, gpio.OUT)
-gpio.setup(13, gpio.OUT)
-gpio.setup(15, gpio.OUT)
-gpio.output(7, False)
-gpio.output(11, False)
-gpio.output(13, False)
-gpio.output(15, False)
+SLEEP_TIME = 1 #set the sleep time of the script so the motors will not keep running
+gpio.setwarnings(False) #disable the warnings because they are too much
+gpio.setmode(gpio.BOARD) # using the board numbering on the raspberry pi
+gpio.setup(7, gpio.OUT) #motor LA
+gpio.setup(11, gpio.OUT) #motor LB
+gpio.setup(13, gpio.OUT) #motor RA
+gpio.setup(15, gpio.OUT) #motor RB
 
 logger = logging.getLogger('directions')
 
@@ -24,7 +20,10 @@ class Direction(Resource):
 
         self.directions = ['left','right','forward','backward','pivotright','pivotleft']
         logger.debug("direction init")
-
+        gpio.output(7, False)
+        gpio.output(11, False)
+        gpio.output(13, False)
+        gpio.output(15, False)
 
     def get(self,direction):
 
