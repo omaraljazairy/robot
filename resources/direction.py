@@ -37,7 +37,6 @@ class Direction(Resource):
             logger.error("%s", error_msg)
             abort(400,error=error_msg)
         else:
-            self.setup()
             getattr(self,dir)()
             return {'direction':dir}
 
