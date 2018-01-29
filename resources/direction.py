@@ -18,6 +18,7 @@ gpio.output(11, False)
 gpio.output(13, False)
 gpio.output(15, False)
 
+
 logger = logging.getLogger('directions')
 
 class Direction(Resource):
