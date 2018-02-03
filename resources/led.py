@@ -4,10 +4,6 @@ import time
 import os
 from resources import logging
 
-gpio.setmode(gpio.BOARD)
-gpio.setwarnings(False)
-gpio.setup(37, gpio.OUT)
-
 SLEEP_TIME = 1
 logger = logging.getLogger('leds')
 
@@ -17,6 +13,7 @@ class Led(Resource):
 
         self.options = ['on','off']
         logger.debug("led init")
+        setup_modes()
 
     def get(self, option):
         if str(option).lower() not in (self.options):
@@ -36,3 +33,9 @@ class Led(Resource):
         logger.info("light off")
         gpio.output(37, False)
         return {'led 37':'off'}
+
+def setup_modes():
+    logger.debug("setup modes")
+    gpio.setmode(gpio.BOARD)
+    gpio.setwarnings(False)
+    gpio.setup(37, gpio.OUT)
