@@ -33,6 +33,7 @@ class Direction(Resource):
         self.directions = ['left','right','forward','backward','pivotright','pivotleft','stop']
         logger.debug("direction init")
         setup()
+        self.led = Led()
 
     def get(self,direction):
 
@@ -66,7 +67,7 @@ class Direction(Resource):
         gpio.output(13, True)
         gpio.output(15, False)
         time.sleep(SLEEP_TIME)
-        Led.blink()
+        self.led.blink()
         gpio.cleanup()
 
 
