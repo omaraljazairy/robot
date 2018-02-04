@@ -46,17 +46,6 @@ class Direction(Resource):
             getattr(self,dir)()
             return {'direction':dir}
 
-    def setup(self):
-
-        logger.debug("setup")
-
-        gpio.setmode(gpio.BOARD)  # using the board numbering on the raspberry pi
-        ''' setting up the mototrs and registering them with gpio '''
-        gpio.setup(7, gpio.OUT)  # motor LA
-        gpio.setup(11, gpio.OUT)  # motor LB
-        gpio.setup(13, gpio.OUT)  # motor RA
-        gpio.setup(15, gpio.OUT)  # motor RB
-
     def stop(self):
 
         logger.debug("setup")
