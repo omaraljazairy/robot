@@ -71,7 +71,7 @@ class Direction(Resource):
         gpio.output(15, False)
 #        time.sleep(SLEEP_TIME)
         self.led.blink()
-        gpio.cleanup()
+#        gpio.cleanup()
 
 
 
