@@ -3,6 +3,7 @@ import RPi.GPIO as gpio
 import time
 import os
 from resources import logging
+from resources.led import Led
 
 SLEEP_TIME = 1 #set the sleep time of the script so the motors will not keep running
 
@@ -65,6 +66,7 @@ class Direction(Resource):
         gpio.output(13, True)
         gpio.output(15, False)
         time.sleep(SLEEP_TIME)
+        Led.blink()
         gpio.cleanup()
 
 
