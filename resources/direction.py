@@ -6,20 +6,24 @@ from resources import logging
 
 SLEEP_TIME = 1 #set the sleep time of the script so the motors will not keep running
 
-gpio.setwarnings(False)  # disable the warnings because they are too much
-gpio.setmode(gpio.BOARD)  # using the board numbering on the raspberry pi
-''' setting up the mototrs and registering them with gpio '''
-gpio.setup(7, gpio.OUT)  # motor LA
-gpio.setup(11, gpio.OUT)  # motor LB
-gpio.setup(13, gpio.OUT)  # motor RA
-gpio.setup(15, gpio.OUT)  # motor RB
-''' disabling the motors which will prevent the mototrs from turning at the start of the application '''
-gpio.output(7, False)
-gpio.output(11, False)
-gpio.output(13, False)
-gpio.output(15, False)
-
 logger = logging.getLogger('directions')
+
+def setup():
+    logger.info("setup executed")
+    gpio.setwarnings(False)  # disable the warnings because they are too much
+    gpio.setmode(gpio.BOARD)  # using the board numbering on the raspberry pi
+    ''' setting up the mototrs and registering them with gpio '''
+    gpio.setup(7, gpio.OUT)  # motor LA
+    gpio.setup(11, gpio.OUT)  # motor LB
+    gpio.setup(13, gpio.OUT)  # motor RA
+    gpio.setup(15, gpio.OUT)  # motor RB
+    ''' disabling the motors which will prevent the mototrs from turning at the start of the application '''
+    gpio.output(7, False)
+    gpio.output(11, False)
+    gpio.output(13, False)
+    gpio.output(15, False)
+
+setup()
 
 class Direction(Resource):
 
@@ -27,7 +31,7 @@ class Direction(Resource):
 
         self.directions = ['left','right','forward','backward','pivotright','pivotleft','stop']
         logger.debug("direction init")
-        self.setup()
+        setup()
 
     def get(self,direction):
 
@@ -140,19 +144,5 @@ class Direction(Resource):
 
 
 
-def setup():
-    logger.info("setup executed")
-    gpio.setwarnings(False)  # disable the warnings because they are too much
-    gpio.setmode(gpio.BOARD)  # using the board numbering on the raspberry pi
-    ''' setting up the mototrs and registering them with gpio '''
-    gpio.setup(7, gpio.OUT)  # motor LA
-    gpio.setup(11, gpio.OUT)  # motor LB
-    gpio.setup(13, gpio.OUT)  # motor RA
-    gpio.setup(15, gpio.OUT)  # motor RB
-    ''' disabling the motors which will prevent the mototrs from turning at the start of the application '''
-    gpio.output(7, False)
-    gpio.output(11, False)
-    gpio.output(13, False)
-    gpio.output(15, False)
 
 #setup()
