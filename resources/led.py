@@ -11,7 +11,7 @@ class Led(Resource):
 
     def __init__(self):
 
-        self.options = ['on','off']
+        self.options = ['on','off','blink']
         logger.debug("led init")
         setup_modes()
 
