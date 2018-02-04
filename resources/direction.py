@@ -2,8 +2,9 @@ from flask_restful import Resource, abort
 import RPi.GPIO as gpio
 import time
 import os
-from resources import logging
+from resources import logging, board
 from resources.led import Led
+
 
 SLEEP_TIME = 1 #set the sleep time of the script so the motors will not keep running
 
@@ -32,8 +33,10 @@ class Direction(Resource):
 
         self.directions = ['left','right','forward','backward','pivotright','pivotleft','stop']
         logger.debug("direction init")
+        board
         setup()
         self.led = Led()
+
 
     def get(self,direction):
 
