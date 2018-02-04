@@ -1,7 +1,7 @@
 from flask_restful import Resource, abort
 import RPi.GPIO as gpio
 import time
-import os
+from gpiozero import LED
 from resources import logging
 
 SLEEP_TIME = 1
@@ -33,6 +33,13 @@ class Led(Resource):
         logger.info("light off")
         gpio.output(37, False)
         return {'led 37':'off'}
+
+    def blink(self):
+        logger.info("blink on")
+        amber = LED(26)
+        # amber.on()
+        amber.blink(0.5, 0.5, 5, False)  # blink(on,off,times to blink,keep on)
+        return {'led 26':'blink'}
 
 def setup_modes():
     logger.debug("setup modes")
