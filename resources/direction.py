@@ -36,6 +36,7 @@ class Direction(Resource):
         gpio.setmode(gpio.BOARD)
         setup()
         self.led = Led()
+        self.X = False
 
 
     def get(self,direction):
@@ -69,8 +70,17 @@ class Direction(Resource):
         gpio.output(11, False)
         gpio.output(13, True)
         gpio.output(15, False)
+        if self.X == False:
+            self.X = True
+        else:
+            self.X = False
+
+        logger.debug("X == %s", self.X)
 #        time.sleep(SLEEP_TIME)
-        self.led.blink()
+        while self.X == True:
+            logger.debug("before blink")
+            self.led.blink()
+            logger.debug("After blink")
 #        gpio.cleanup()
 
 
