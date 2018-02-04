@@ -39,7 +39,7 @@ class Led(Resource):
         logger.info("blink on")
         amber = LED(26)
         # amber.on()
-        amber.blink(0.5, 0.5, 5, False)  # blink(on,off,times to blink,keep on)
+        amber.blink(0.5, 0.5, 1, False)  # blink(on,off,times to blink,keep on)
         return {'led 26':'blink'}
 
 def setup_modes():
