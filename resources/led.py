@@ -44,6 +44,6 @@ class Led(Resource):
 
 def setup_modes():
     logger.debug("setup modes")
-    gpio.setmode(gpio.BOARD)
-    gpio.setwarnings(False)
+#    gpio.setmode(gpio.BOARD)
+#    gpio.setwarnings(False)
     gpio.setup(37, gpio.OUT)
