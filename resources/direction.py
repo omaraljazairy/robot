@@ -128,6 +128,7 @@ class Direction(Resource):
 
 
 def setup():
+    logger.info("setup executed")
     gpio.setwarnings(False)  # disable the warnings because they are too much
     gpio.setmode(gpio.BOARD)  # using the board numbering on the raspberry pi
     ''' setting up the mototrs and registering them with gpio '''
