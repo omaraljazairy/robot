@@ -33,7 +33,7 @@ class Direction(Resource):
 
         self.directions = ['left','right','forward','backward','pivotright','pivotleft','stop']
         logger.debug("direction init")
-        board
+        gpio.setmode(gpio.BOARD)
         setup()
         self.led = Led()
 

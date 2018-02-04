@@ -13,6 +13,7 @@ class Led(Resource):
 
         self.options = ['on','off','blink']
         logger.debug("led init")
+        gpio.setmode(gpio.BOARD)
         setup_modes()
 
     def get(self, option):
@@ -44,7 +45,7 @@ class Led(Resource):
 
 def setup_modes():
     logger.debug("setup modes")
-    board
+
 #    gpio.setmode(gpio.BOARD)
 #    gpio.setwarnings(False)
     gpio.setup(37, gpio.OUT)
