@@ -32,6 +32,7 @@ class Led(Resource):
     def off(self):
         logger.info("light off")
         gpio.output(37, False)
+        self.blink()
         return {'led 37':'off'}
 
     def blink(self):
