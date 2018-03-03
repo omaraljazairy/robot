@@ -36,6 +36,40 @@ class Led(Resource):
         self.blink()
         return {'led 37':'off'}
 
+    def front(self):
+        logger.info("light off")
+        gpio.output(37, False)
+        self.blink()
+        return {'led 37':'off'}
+
+    def back(self):
+        logger.info("light off")
+        gpio.output(21, False)
+        self.blink()
+        return {'led 21':'off'}
+
+
+    def reverse(self):
+        logger.info("light off")
+        gpio.output(37, False)
+        self.blink()
+        return {'led 37':'off'}
+
+
+    def left_signal(self):
+        logger.info("light off")
+        gpio.output(37, False)
+        self.blink()
+        return {'led 37':'off'}
+
+
+    def right_signal(self):
+        logger.info("light off")
+        gpio.output(37, False)
+        self.blink()
+        return {'led 37':'off'}
+
+
     def blink(self):
         logger.info("blink on")
         amber = LED(26)
