@@ -1,7 +1,6 @@
 from flask_restful import Resource, abort
 import RPi.GPIO as gpio
 import time
-from gpiozero import LED
 from resources import logging, board
 
 SLEEP_TIME = 1
@@ -11,10 +10,11 @@ class Led(Resource):
 
     def __init__(self):
 
-        self.options = ['on','off','blink']
         logger.debug("led init")
         gpio.setmode(gpio.BOARD)
-        setup_modes()
+        setup()
+        self.options = ['on','off','blink']
+
 
     def get(self, option):
         if str(option).lower() not in (self.options):
@@ -27,59 +27,39 @@ class Led(Resource):
 
     def on(self):
         logger.info("light on")
-        gpio.output(37, True)
+        gpio.output(21, True)
         return {'led 37':'on'}
 
     def off(self):
         logger.info("light off")
-        gpio.output(37, False)
-        self.blink()
+        gpio.output(21, False)
         return {'led 37':'off'}
 
     def front(self):
         logger.info("light off")
         gpio.output(37, False)
-        self.blink()
         return {'led 37':'off'}
 
     def back(self):
         logger.info("light off")
         gpio.output(21, False)
-        self.blink()
         return {'led 21':'off'}
 
 
     def reverse(self):
         logger.info("light off")
         gpio.output(37, False)
-        self.blink()
         return {'led 37':'off'}
 
 
-    def left_signal(self):
-        logger.info("light off")
-        gpio.output(37, False)
-        self.blink()
-        return {'led 37':'off'}
 
+def setup():
+    logger.info("setup executed")
+    ''' setting up the leds and registering them with gpio '''
+    gpio.setup(21, gpio.OUT)  # back lights
+#    gpio.setup(11, gpio.OUT)  # front lights
+    ''' disabling the motors which will prevent the leds from turning at the start of the application '''
+    gpio.output(21, False)
+#    gpio.output(11, False)
 
-    def right_signal(self):
-        logger.info("light off")
-        gpio.output(37, False)
-        self.blink()
-        return {'led 37':'off'}
-
-
-    def blink(self):
-        logger.info("blink on")
-        amber = LED(26)
-        # amber.on()
-        amber.blink(0.5, 0.5, 1, False)  # blink(on,off,times to blink,keep on)
-        return {'led 26':'blink'}
-
-def setup_modes():
-    logger.debug("setup modes")
-
-#    gpio.setmode(gpio.BOARD)
-#    gpio.setwarnings(False)
-    gpio.setup(37, gpio.OUT)
+setup()
