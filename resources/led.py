@@ -13,7 +13,7 @@ class Led(Resource):
         logger.debug("led init")
         gpio.setmode(gpio.BOARD)
         setup()
-        self.options = ['on','off','blink']
+        self.options = ['on','off']
 
 
     def get(self, option):
@@ -40,9 +40,9 @@ class Led(Resource):
         gpio.output(37, False)
         return {'led 37':'off'}
 
-    def back(self):
-        logger.info("light off")
-        gpio.output(21, False)
+    def back(self, on=bool):
+        logger.info("light on: %s", on)
+        gpio.output(21, on)
         return {'led 21':'off'}
 
 

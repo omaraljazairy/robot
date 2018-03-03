@@ -54,8 +54,8 @@ class Direction(Resource):
 
     def stop(self):
 
-        logger.debug("setup")
-
+        logger.debug("stop")
+        self.led.back(on=False)
         gpio.output(7, False)
         gpio.output(11, False)
         gpio.output(13, False)
@@ -70,18 +70,7 @@ class Direction(Resource):
         gpio.output(11, False)
         gpio.output(13, True)
         gpio.output(15, False)
-        if self.X == False:
-            self.X = True
-        else:
-            self.X = False
-
-        logger.debug("X == %s", self.X)
-#        time.sleep(SLEEP_TIME)
-        while self.X == True:
-            logger.debug("before blink")
-            self.led.blink()
-            logger.debug("After blink")
-#        gpio.cleanup()
+        gpio.cleanup()
 
 
 
@@ -113,7 +102,7 @@ class Direction(Resource):
     def backward(self):
 
         logger.debug("backward")
-
+        self.led.back(on=True)
         gpio.output(7, True)
         gpio.output(11, False)
         gpio.output(13, False)
