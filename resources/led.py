@@ -5,7 +5,8 @@ from resources import logging, board
 
 SLEEP_TIME = 1
 logger = logging.getLogger('leds')
-pin = {'front': 36,'back':21}
+FRONT_PIN = 36
+BACK_PIN = 21
 
 
 class Led(Resource):
@@ -29,24 +30,24 @@ class Led(Resource):
 
     def on(self):
         logger.info("light on")
-        gpio.output(pin['back'], True)
-        gpio.output(pin['frot'], True)
+        gpio.output(BACK_PIN, True)
+        gpio.output(FRONT_PIN, True)
         return {'lights on':True}
 
     def off(self):
         logger.info("light off")
-        gpio.output(pin['back'], False)
-        gpio.output(pin['front'], False)
+        gpio.output(BACK_PIN, False)
+        gpio.output(FRONT_PIN, False)
         return {'lights off':True}
 
     def front(self,on=bool):
         logger.info("light off")
-        gpio.output(pin['front'], on)
+        gpio.output(FRONT_PIN, on)
         return {'front light 36':on}
 
     def back(self, on=bool):
         logger.info("light on: %s", on)
-        gpio.output(pin['back'], on)
+        gpio.output(BACK_PIN, on)
         return {'back light 21': on}
 
 
@@ -60,10 +61,10 @@ class Led(Resource):
 def setup():
     logger.info("setup executed")
     ''' setting up the leds and registering them with gpio '''
-    gpio.setup(pin['back'], gpio.OUT)  # back lights
-    gpio.setup(pin['front'], gpio.OUT)  # front lights
+    gpio.setup(BACK_PIN, gpio.OUT)  # back lights
+    gpio.setup(FRONT_PIN, gpio.OUT)  # front lights
     ''' disabling the motors which will prevent the leds from turning at the start of the application '''
-    gpio.output(pin['back'], False)
-    gpio.output(pin['front'], False)
+    gpio.output(BACK_PIN, False)
+    gpio.output(FRONT_PIN, False)
 
 setup()
