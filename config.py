@@ -7,7 +7,7 @@ class Config(object):
     SECRET = os.getenv('SECRET')
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    HOME_DIR = os.path.join(BASE_DIR,'robotics/')
+    HOME_DIR = os.path.join(BASE_DIR,'robotic/')
     LOGGING = {
         'version': 1,
         'disable_existing_loggers': False,
