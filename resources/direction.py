@@ -31,12 +31,12 @@ class Direction(Resource):
 
     def __init__(self):
 
-        self.directions = ['left','right','forward','backward','pivotright','pivotleft','stop']
+        self.directions = ['left','right','forward','backward','pivotright','pivotleft','stop','start','break1']
         logger.debug("direction init")
         gpio.setmode(gpio.BOARD)
         setup()
         self.led = Led()
-        self.X = False
+
 
 
     def get(self,direction):
@@ -52,10 +52,21 @@ class Direction(Resource):
             getattr(self,dir)()
             return {'direction':dir}
 
-    def stop(self):
 
-        logger.debug("stop")
+    def start(self):
+        logger.debug("car engine started")
+        self.led.back(on=True)
+        self.led.front(on=True)
+
+    def stop(self):
+        logger.debug("car engine stopped")
         self.led.back(on=False)
+        self.led.front(on=False)
+
+    def break1(self):
+
+        logger.debug("break")
+#        self.led.back(on=False)
         gpio.output(7, False)
         gpio.output(11, False)
         gpio.output(13, False)
@@ -82,7 +93,7 @@ class Direction(Resource):
         gpio.output(11, True)
         gpio.output(13, False)
         gpio.output(15, False)
-        time.sleep(SLEEP_TIME)
+ #       time.sleep(SLEEP_TIME)
         gpio.cleanup()
 
 
@@ -102,12 +113,11 @@ class Direction(Resource):
     def backward(self):
 
         logger.debug("backward")
-        self.led.back(on=True)
         gpio.output(7, True)
         gpio.output(11, False)
         gpio.output(13, False)
         gpio.output(15, True)
-        time.sleep(SLEEP_TIME)
+#        time.sleep(SLEEP_TIME)
         gpio.cleanup()
 
 
@@ -120,7 +130,7 @@ class Direction(Resource):
         gpio.output(11, False)
         gpio.output(13, True)
         gpio.output(15, False)
-        time.sleep(SLEEP_TIME)
+#        time.sleep(SLEEP_TIME)
         gpio.cleanup()
 
 
@@ -133,7 +143,7 @@ class Direction(Resource):
         gpio.output(11, True)
         gpio.output(13, False)
         gpio.output(15, True)
-        time.sleep(SLEEP_TIME)
+#        time.sleep(SLEEP_TIME)
         gpio.cleanup()
 
 
