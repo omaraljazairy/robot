@@ -30,7 +30,7 @@ class Led(Resource):
     def on(self):
         logger.info("light on")
         gpio.output(pin['back'], True)
-        gpio.output(pin['fron'], True)
+        gpio.output(pin['frot'], True)
         return {'lights on':True}
 
     def off(self):
