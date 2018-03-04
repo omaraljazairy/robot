@@ -78,12 +78,13 @@ class Direction(Resource):
         logger.debug("left")
 
 #        self.led.back(on=True)
-        self.led.front(on=True)
+
         logger.debug("turn left")
         gpio.output(7, False)
         gpio.output(11, False)
         gpio.output(13, True)
         gpio.output(15, False)
+        self.led.front(on=True)
         gpio.cleanup()
 
 
