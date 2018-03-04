@@ -66,17 +66,18 @@ class Direction(Resource):
     def break1(self):
 
         logger.debug("break")
-#        self.led.back(on=False)
+        self.start()
         gpio.output(7, False)
         gpio.output(11, False)
         gpio.output(13, False)
         gpio.output(15, False)
-#        gpio.cleanup()
+        gpio.cleanup()
 
     def left(self):
 
         logger.debug("left")
 
+        self.start()
         gpio.output(7, False)
         gpio.output(11, False)
         gpio.output(13, True)
@@ -89,6 +90,7 @@ class Direction(Resource):
 
         logger.debug("right")
 
+        self.start()
         gpio.output(7, False)
         gpio.output(11, True)
         gpio.output(13, False)
@@ -102,17 +104,19 @@ class Direction(Resource):
 
         logger.debug("forward")
 
+        self.start()
         gpio.output(7, False)
         gpio.output(11, True)
         gpio.output(13, True)
         gpio.output(15, False)
 #        time.sleep(SLEEP_TIME)
-#        gpio.cleanup()
+        gpio.cleanup()
 
 
     def backward(self):
 
         logger.debug("backward")
+        self.start()
         gpio.output(7, True)
         gpio.output(11, False)
         gpio.output(13, False)
@@ -126,6 +130,7 @@ class Direction(Resource):
 
         logger.debug("pivotleft")
 
+        self.start()
         gpio.output(7, True)
         gpio.output(11, False)
         gpio.output(13, True)
@@ -138,15 +143,13 @@ class Direction(Resource):
 
         logger.debug("pivotright")
 
-
+        self.start()
         gpio.output(7, False)
         gpio.output(11, True)
         gpio.output(13, False)
         gpio.output(15, True)
 #        time.sleep(SLEEP_TIME)
         gpio.cleanup()
-
-
 
 
 #setup()
