@@ -41,7 +41,7 @@ class Led(Resource):
         return {'lights off':True}
 
     def front(self,on=bool):
-        logger.info("light off")
+        logger.info("light on")
         gpio.output(FRONT_PIN, on)
         return {'front light 36':on}
 
