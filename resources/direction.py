@@ -55,13 +55,13 @@ class Direction(Resource):
 
     def start(self):
         logger.debug("car engine started")
-        self.led.back(on=True)
-        self.led.front(on=True)
+#        self.led.back(on=True)
+#        self.led.front(on=True)
 
     def stop(self):
         logger.debug("car engine stopped")
-        self.led.back(on=False)
-        self.led.front(on=False)
+#        self.led.back(on=False)
+#        self.led.front(on=False)
 
     def break1(self):
 
@@ -93,8 +93,8 @@ class Direction(Resource):
 
         logger.debug("right")
 
-        self.led.back(on=True)
-        self.led.front(on=True)
+#        self.led.back(on=True)
+#        self.led.front(on=True)
 
         gpio.output(7, False)
         gpio.output(11, True)
@@ -109,8 +109,8 @@ class Direction(Resource):
 
         logger.debug("forward")
 
-        self.led.back(on=True)
-        self.led.front(on=True)
+#        self.led.back(on=True)
+#        self.led.front(on=True)
 
         gpio.output(7, False)
         gpio.output(11, True)
@@ -123,8 +123,8 @@ class Direction(Resource):
     def backward(self):
 
         logger.debug("backward")
-        self.led.back(on=True)
-        self.led.front(on=True)
+#        self.led.back(on=True)
+#        self.led.front(on=True)
 
         gpio.output(7, True)
         gpio.output(11, False)
@@ -139,8 +139,8 @@ class Direction(Resource):
 
         logger.debug("pivotleft")
 
-        self.led.back(on=True)
-        self.led.front(on=True)
+#        self.led.back(on=True)
+#        self.led.front(on=True)
 
         gpio.output(7, True)
         gpio.output(11, False)
@@ -154,8 +154,8 @@ class Direction(Resource):
 
         logger.debug("pivotright")
 
-        self.led.back(on=True)
-        self.led.front(on=True)
+#        self.led.back(on=True)
+#        self.led.front(on=True)
 
         gpio.output(7, False)
         gpio.output(11, True)
