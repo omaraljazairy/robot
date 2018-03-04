@@ -110,18 +110,19 @@ class Direction(Resource):
         gpio.output(13, True)
         gpio.output(15, False)
         time.sleep(SLEEP_TIME)
-#        gpio.cleanup()
+        gpio.cleanup()
 
 
     def backward(self):
 
         logger.debug("backward")
+        self.start()
         gpio.output(7, True)
         gpio.output(11, False)
         gpio.output(13, False)
         gpio.output(15, True)
 #        time.sleep(SLEEP_TIME)
-        gpio.cleanup()
+#        gpio.cleanup()
 
 
 
@@ -133,7 +134,7 @@ class Direction(Resource):
         gpio.output(11, False)
         gpio.output(13, True)
         gpio.output(15, False)
-#        time.sleep(SLEEP_TIME)
+        time.sleep(SLEEP_TIME)
         gpio.cleanup()
 
 
@@ -146,7 +147,7 @@ class Direction(Resource):
         gpio.output(11, True)
         gpio.output(13, False)
         gpio.output(15, True)
-#        time.sleep(SLEEP_TIME)
+        time.sleep(SLEEP_TIME)
         gpio.cleanup()
 
 
