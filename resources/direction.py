@@ -60,8 +60,8 @@ class Direction(Resource):
 
     def stop(self):
         logger.debug("car started")
-        self.led.back(on=True)
-        self.led.front(on=True)
+        self.led.back(on=False)
+        self.led.front(on=False)
 
     def breaking(self):
 
@@ -77,6 +77,7 @@ class Direction(Resource):
 
         logger.debug("left")
 
+        self.start()
         gpio.output(7, False)
         gpio.output(11, False)
         gpio.output(13, True)
@@ -103,6 +104,7 @@ class Direction(Resource):
 
         logger.debug("forward")
 
+        self.start()
         gpio.output(7, False)
         gpio.output(11, True)
         gpio.output(13, True)
