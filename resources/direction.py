@@ -35,7 +35,7 @@ class Direction(Resource):
         logger.debug("direction init")
         gpio.setmode(gpio.BOARD)
         setup()
-        self.led = Led()
+ #       self.led = Led()
 
 
 
