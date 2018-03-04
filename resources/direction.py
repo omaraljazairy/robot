@@ -31,11 +31,11 @@ class Direction(Resource):
 
     def __init__(self):
 
-        self.directions = ['left','right','forward','backward','pivotright','pivotleft','stop','start','break1']
+        self.directions = ['left','right','forward','backward','pivotright','pivotleft','stop','turn_on','turn_off']
         logger.debug("direction init")
         gpio.setmode(gpio.BOARD)
         setup()
- #       self.led = Led()
+        self.led = Led()
 
 
 
@@ -54,19 +54,19 @@ class Direction(Resource):
 
 
     def start(self):
-        logger.debug("car engine started")
-#        self.led.back(on=True)
-#        self.led.front(on=True)
+        logger.debug("car started")
+        self.led.back(on=True)
+        self.led.front(on=True)
 
     def stop(self):
-        logger.debug("car engine stopped")
+        logger.debug("car started")
+        self.led.back(on=True)
+        self.led.front(on=True)
+
+    def breaking(self):
+
+        logger.debug("stop")
 #        self.led.back(on=False)
-#        self.led.front(on=False)
-
-    def break1(self):
-
-        logger.debug("break")
-        self.stop()
         gpio.output(7, False)
         gpio.output(11, False)
         gpio.output(13, False)
@@ -77,14 +77,10 @@ class Direction(Resource):
 
         logger.debug("left")
 
-#        self.led.back(on=True)
-
-        logger.debug("turn left")
         gpio.output(7, False)
         gpio.output(11, False)
         gpio.output(13, True)
         gpio.output(15, False)
-#        self.led.front(on=True)
         gpio.cleanup()
 
 
@@ -92,9 +88,6 @@ class Direction(Resource):
     def right(self):
 
         logger.debug("right")
-
-#        self.led.back(on=True)
-#        self.led.front(on=True)
 
         gpio.output(7, False)
         gpio.output(11, True)
@@ -109,23 +102,17 @@ class Direction(Resource):
 
         logger.debug("forward")
 
-#        self.led.back(on=True)
-#        self.led.front(on=True)
-
         gpio.output(7, False)
         gpio.output(11, True)
         gpio.output(13, True)
         gpio.output(15, False)
 #        time.sleep(SLEEP_TIME)
-        gpio.cleanup()
+#        gpio.cleanup()
 
 
     def backward(self):
 
         logger.debug("backward")
-#        self.led.back(on=True)
-#        self.led.front(on=True)
-
         gpio.output(7, True)
         gpio.output(11, False)
         gpio.output(13, False)
@@ -139,9 +126,6 @@ class Direction(Resource):
 
         logger.debug("pivotleft")
 
-#        self.led.back(on=True)
-#        self.led.front(on=True)
-
         gpio.output(7, True)
         gpio.output(11, False)
         gpio.output(13, True)
@@ -154,8 +138,6 @@ class Direction(Resource):
 
         logger.debug("pivotright")
 
-#        self.led.back(on=True)
-#        self.led.front(on=True)
 
         gpio.output(7, False)
         gpio.output(11, True)
@@ -163,6 +145,8 @@ class Direction(Resource):
         gpio.output(15, True)
 #        time.sleep(SLEEP_TIME)
         gpio.cleanup()
+
+
 
 
 #setup()
