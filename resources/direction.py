@@ -84,7 +84,7 @@ class Direction(Resource):
         gpio.output(11, False)
         gpio.output(13, True)
         gpio.output(15, False)
-        self.led.front(on=True)
+#        self.led.front(on=True)
         gpio.cleanup()
 
 
