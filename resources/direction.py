@@ -81,7 +81,8 @@ class Direction(Resource):
         gpio.output(11, False)
         gpio.output(13, True)
         gpio.output(15, False)
-        gpio.cleanup()
+        time.sleep(SLEEP_TIME)
+#        gpio.cleanup()
 
 
 
@@ -106,7 +107,7 @@ class Direction(Resource):
         gpio.output(11, True)
         gpio.output(13, True)
         gpio.output(15, False)
-#        time.sleep(SLEEP_TIME)
+        time.sleep(SLEEP_TIME)
 #        gpio.cleanup()
 
 
