@@ -77,7 +77,7 @@ class Direction(Resource):
 
         logger.debug("left")
 
-        self.led.back(on=True)
+#        self.led.back(on=True)
         self.led.front(on=True)
 
         gpio.output(7, False)
