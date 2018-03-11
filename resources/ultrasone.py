@@ -16,7 +16,7 @@ class Ultrasone(Resource):
 
     def __init__(self):
         # set GPIO direction (IN / OUT)
-        gpio.setmode(gpio.BCM)
+        gpio.setmode(gpio.BOARD)
         gpio.setup(GPIO_TRIGGER, gpio.OUT)
         gpio.setup(GPIO_ECHO, gpio.IN)
         logger.debug("ultrasone initialized")
