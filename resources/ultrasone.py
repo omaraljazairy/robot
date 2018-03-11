@@ -54,7 +54,7 @@ class Ultrasone(Resource):
 
         # time difference between start and arrival
         TimeElapsed = StopTime - StartTime
-        logger.debug("StopTime: %s - StartTime: %s =  TimeElapsed: %s", str(StopTime), str(StartTime), str(TimeElapsed))
+        logger.debug("StopTime: %s - StartTime: %s =  TimeElapsed: %s", str(round(StopTime,1)), str(round(StartTime,1)), str(round(TimeElapsed,1)))
         # multiply with the sonic speed (34300 cm/s)
         # and divide by 2, because there and back
         distance = (TimeElapsed * 34300) / 2
@@ -68,7 +68,7 @@ class Ultrasone(Resource):
             while True:
                 dist = self.distance()
                 print("Measured Distance = %.1f cm" % dist)
-                logger.debug("Measured Distance = %s cm",dist)
+                logger.debug("Measured Distance = %s cm",round(dist,1))
                 time.sleep(1)
 
         # Reset by pressing CTRL + C
