@@ -4,8 +4,8 @@ import time
 from resources import logging
 
 SLEEP_TIME = 1
-GPIO_TRIGGER = 20
-GPIO_ECHO = 21
+GPIO_TRIGGER = 38
+GPIO_ECHO = 40
 
 #GPIO Mode (BOARD / BCM)
 
@@ -16,7 +16,7 @@ class Ultrasone(Resource):
 
     def __init__(self):
         # set GPIO direction (IN / OUT)
-        gpio.setmode(gpio.BCM)
+        gpio.setmode(gpio.BOARD)
         setup()
         logger.debug("ultrasone initialized")
         self.options = ['start']
