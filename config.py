@@ -41,7 +41,12 @@ class Config(object):
                 'level': 'DEBUG',
                 'propagate': True,
             },
-             'leds': {
+            'leds': {
+                'handlers': ['file'],
+                'level': 'DEBUG',
+                'propagate': True,
+            },
+            'ultrasone': {
                 'handlers': ['file'],
                 'level': 'DEBUG',
                 'propagate': True,

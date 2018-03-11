@@ -1,7 +1,6 @@
 from flask_restful import Resource, abort
 import RPi.GPIO as gpio
-import time
-from resources import logging, board
+from resources import logging
 
 SLEEP_TIME = 1
 logger = logging.getLogger('leds')
