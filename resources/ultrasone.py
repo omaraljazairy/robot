@@ -16,9 +16,8 @@ class Ultrasone(Resource):
 
     def __init__(self):
         # set GPIO direction (IN / OUT)
-        gpio.setmode(gpio.BOARD)
-        gpio.setup(GPIO_TRIGGER, gpio.OUT)
-        gpio.setup(GPIO_ECHO, gpio.IN)
+        gpio.setmode(gpio.BCM)
+        setup()
         logger.debug("ultrasone initialized")
         self.options = ['start']
 
@@ -78,3 +77,10 @@ class Ultrasone(Resource):
         except KeyboardInterrupt:
             print("Measurement stopped by User")
             gpio.cleanup()
+
+
+def setup():
+    gpio.setup(GPIO_TRIGGER, gpio.OUT)
+    gpio.setup(GPIO_ECHO, gpio.IN)
+
+setup()
