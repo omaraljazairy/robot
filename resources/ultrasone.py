@@ -8,7 +8,7 @@ GPIO_TRIGGER = 20
 GPIO_ECHO = 21
 
 #GPIO Mode (BOARD / BCM)
-gpio.setmode(gpio.BCM)
+
 
 logger = logging.getLogger('ultrasone')
 
@@ -16,6 +16,7 @@ class Ultrasone(Resource):
 
     def __init__(self):
         # set GPIO direction (IN / OUT)
+        gpio.setmode(gpio.BCM)
         gpio.setup(GPIO_TRIGGER, gpio.OUT)
         gpio.setup(GPIO_ECHO, gpio.IN)
         logger.debug("ultrasone initialized")
