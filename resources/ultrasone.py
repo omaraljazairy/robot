@@ -46,12 +46,10 @@ class Ultrasone(Resource):
 
         # save StartTime
         while gpio.input(GPIO_ECHO) == 0:
-            logger.debug("GPIO_ECHO == 0")
             StartTime = time.time()
 
         # save time of arrival
         while gpio.input(GPIO_ECHO) == 1:
-            logger.debug("GPIO_ECHO == 1")
             StopTime = time.time()
 
         # time difference between start and arrival
@@ -60,7 +58,7 @@ class Ultrasone(Resource):
         # multiply with the sonic speed (34300 cm/s)
         # and divide by 2, because there and back
         distance = (TimeElapsed * 34300) / 2
-        logger.debug("distance = (TimeElapsed * 34300) / 2 => %s", str(distance))
+#        logger.debug("distance = (TimeElapsed * 34300) / 2 => %s", str(distance))
 
         return distance
 
