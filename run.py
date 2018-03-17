@@ -27,4 +27,4 @@ api.add_resource(Led,'/leds/<string:option>/')
 api.add_resource(Ultrasone,'/ultrasone/<string:option>/')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port=8009, debug=True)
+    app.run(host='0.0.0.0',port=8009, debug=True, threaded=True)
