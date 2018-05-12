@@ -51,6 +51,11 @@ class Config(object):
                 'level': 'DEBUG',
                 'propagate': True,
             },
+            'tpr': {
+                'handlers': ['file'],
+                'level': 'DEBUG',
+                'propagate': True,
+            },
         },
     }
     
