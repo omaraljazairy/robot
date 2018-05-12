@@ -3,7 +3,7 @@ from flask_restful import Resource, Api
 from resources.direction import Direction
 from resources.ultrasone import Ultrasone
 from resources.led import Led
-from resource.tpr import TPR
+from resources.tpr import TPR
 from config import app_config
 import logging
 import logging.config
